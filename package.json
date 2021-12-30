@@ -5,7 +5,7 @@
   "main": "./dist/bundle.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/effectussoftware/react-custom-roulette"
+    "url": "https://github.com/luismy2227/react-custom-roulette-master"
   },
   "keywords": [
     "react",
