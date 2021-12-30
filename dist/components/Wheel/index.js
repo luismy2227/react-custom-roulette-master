@@ -87,6 +87,6 @@ export var Wheel = function (_a) {
     }
     return (React.createElement(RouletteContainer, null,
         React.createElement(RotationContainer, { className: getRouletteClass(), startSpinningTime: START_SPINNING_TIME, continueSpinningTime: CONTINUE_SPINNING_TIME, stopSpinningTime: STOP_SPINNING_TIME, startRotationDegrees: startRotationDegrees, finalRotationDegrees: finalRotationDegrees },
-            React.createElement(WheelCanvas, { width: "900", height: "900", data: wheelData, outerBorderColor: outerBorderColor, outerBorderWidth: outerBorderWidth, innerRadius: innerRadius, innerBorderColor: innerBorderColor, innerBorderWidth: innerBorderWidth, radiusLineColor: radiusLineColor, radiusLineWidth: radiusLineWidth, fontSize: fontSize, perpendicularText: perpendicularText, textDistance: textDistance })),
+            React.createElement(WheelCanvas, { width: "1100", height: "1100", data: wheelData, outerBorderColor: outerBorderColor, outerBorderWidth: outerBorderWidth, innerRadius: innerRadius, innerBorderColor: innerBorderColor, innerBorderWidth: innerBorderWidth, radiusLineColor: radiusLineColor, radiusLineWidth: radiusLineWidth, fontSize: fontSize, perpendicularText: perpendicularText, textDistance: textDistance })),
         React.createElement(RouletteSelectorImage, { src: rouletteSelector.src, alt: "roulette-static" })));
 };
