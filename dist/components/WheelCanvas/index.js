@@ -26,7 +26,7 @@ var drawWheel = function (canvasRef, data, drawWheelProps) {
         var insideRadius = (outsideRadius * clampedInsideRadius) / 100;
         var centerX = canvas.width / 2;
         var centerY = canvas.height / 2;
-        ctx.font = "bold " + fontSize + "px Helvetica, Arial";
+        ctx.font = "bold ".concat(fontSize, "px Helvetica, Arial");
         for (var i = 0; i < data.length; i++) {
             var angle = startAngle + i * arc;
             var style = data[i].style;
@@ -48,13 +48,6 @@ var drawWheel = function (canvasRef, data, drawWheelProps) {
                 ctx.closePath();
                 ctx.stroke();
             }
-            // WHEEL OUTER OUTER BORDER
-            ctx.strokeStyle ='#0c87e7';
-            ctx.lineWidth = outerBorderWidth;
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, outsideRadius+5 - ctx.lineWidth / 2, 0, 2 * Math.PI);
-            ctx.closePath();
-            ctx.stroke();
             // WHEEL OUTER BORDER
             ctx.strokeStyle =
                 outerBorderWidth <= 0 ? 'transparent' : outerBorderColor;

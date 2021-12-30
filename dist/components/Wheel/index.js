@@ -9,10 +9,14 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 import React, { useState, useEffect, useRef } from 'react';
 import { getRotationDegrees } from '../../utils';
@@ -26,7 +30,7 @@ var CONTINUE_SPINNING_TIME = 750;
 var STOP_SPINNING_TIME = 8000;
 export var Wheel = function (_a) {
     var mustStartSpinning = _a.mustStartSpinning, prizeNumber = _a.prizeNumber, data = _a.data, _b = _a.onStopSpinning, onStopSpinning = _b === void 0 ? function () { return null; } : _b, _c = _a.backgroundColors, backgroundColors = _c === void 0 ? DEFAULT_BACKGROUND_COLORS : _c, _d = _a.textColors, textColors = _d === void 0 ? DEFAULT_TEXT_COLORS : _d, _e = _a.outerBorderColor, outerBorderColor = _e === void 0 ? DEFAULT_OUTER_BORDER_COLOR : _e, _f = _a.outerBorderWidth, outerBorderWidth = _f === void 0 ? DEFAULT_OUTER_BORDER_WIDTH : _f, _g = _a.innerRadius, innerRadius = _g === void 0 ? DEFAULT_INNER_RADIUS : _g, _h = _a.innerBorderColor, innerBorderColor = _h === void 0 ? DEFAULT_INNER_BORDER_COLOR : _h, _j = _a.innerBorderWidth, innerBorderWidth = _j === void 0 ? DEFAULT_INNER_BORDER_WIDTH : _j, _k = _a.radiusLineColor, radiusLineColor = _k === void 0 ? DEFAULT_RADIUS_LINE_COLOR : _k, _l = _a.radiusLineWidth, radiusLineWidth = _l === void 0 ? DEFAULT_RADIUS_LINE_WIDTH : _l, _m = _a.fontSize, fontSize = _m === void 0 ? DEFAULT_FONT_SIZE : _m, _o = _a.perpendicularText, perpendicularText = _o === void 0 ? false : _o, _p = _a.textDistance, textDistance = _p === void 0 ? DEFAULT_TEXT_DISTANCE : _p;
-    var _q = useState(__spreadArray([], data)), wheelData = _q[0], setWheelData = _q[1];
+    var _q = useState(__spreadArray([], data, true)), wheelData = _q[0], setWheelData = _q[1];
     var _r = useState(0), startRotationDegrees = _r[0], setStartRotationDegrees = _r[1];
     var _s = useState(0), finalRotationDegrees = _s[0], setFinalRotationDegrees = _s[1];
     var _t = useState(false), hasStartedSpinning = _t[0], setHasStartedSpinning = _t[1];
@@ -37,8 +41,7 @@ export var Wheel = function (_a) {
     useEffect(function () {
         var _a, _b;
         var dataLength = data.length;
-        setWheelData(__spreadArray([], data));
-        var wheelDataAux = [];
+        var wheelDataAux = [{ option: '' }];
         for (var i = 0; i < dataLength; i++) {
             wheelDataAux[i] = __assign(__assign({}, data[i]), { style: {
                     backgroundColor: ((_a = data[i].style) === null || _a === void 0 ? void 0 : _a.backgroundColor) ||
@@ -46,7 +49,7 @@ export var Wheel = function (_a) {
                     textColor: ((_b = data[i].style) === null || _b === void 0 ? void 0 : _b.textColor) || textColors[i % textColors.length],
                 } });
         }
-        dataLength && setWheelData(__spreadArray([], wheelDataAux));
+        setWheelData(__spreadArray([], wheelDataAux, true));
         setIsDataUpdated(true);
     }, [data, backgroundColors, textColors]);
     useEffect(function () {
@@ -87,6 +90,6 @@ export var Wheel = function (_a) {
     }
     return (React.createElement(RouletteContainer, null,
         React.createElement(RotationContainer, { className: getRouletteClass(), startSpinningTime: START_SPINNING_TIME, continueSpinningTime: CONTINUE_SPINNING_TIME, stopSpinningTime: STOP_SPINNING_TIME, startRotationDegrees: startRotationDegrees, finalRotationDegrees: finalRotationDegrees },
-            React.createElement(WheelCanvas, { width: "1100", height: "1100", data: wheelData, outerBorderColor: outerBorderColor, outerBorderWidth: outerBorderWidth, innerRadius: innerRadius, innerBorderColor: innerBorderColor, innerBorderWidth: innerBorderWidth, radiusLineColor: radiusLineColor, radiusLineWidth: radiusLineWidth, fontSize: fontSize, perpendicularText: perpendicularText, textDistance: textDistance })),
+            React.createElement(WheelCanvas, { width: "900", height: "900", data: wheelData, outerBorderColor: outerBorderColor, outerBorderWidth: outerBorderWidth, innerRadius: innerRadius, innerBorderColor: innerBorderColor, innerBorderWidth: innerBorderWidth, radiusLineColor: radiusLineColor, radiusLineWidth: radiusLineWidth, fontSize: fontSize, perpendicularText: perpendicularText, textDistance: textDistance })),
         React.createElement(RouletteSelectorImage, { src: rouletteSelector.src, alt: "roulette-static" })));
 };
