@@ -48,13 +48,6 @@ var drawWheel = function (canvasRef, data, drawWheelProps) {
                 ctx.closePath();
                 ctx.stroke();
             }
-            // WHEEL OUTER OUTER BORDER
-            ctx.strokeStyle ='#0c87e7';
-            ctx.lineWidth = outerBorderWidth;
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, outsideRadius+5 - ctx.lineWidth / 2, 0, 2 * Math.PI);
-            ctx.closePath();
-            ctx.stroke();
             // WHEEL OUTER BORDER
             ctx.strokeStyle =
                 outerBorderWidth <= 0 ? 'transparent' : outerBorderColor;
